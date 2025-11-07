@@ -9,5 +9,9 @@ test: test.o calculadora.o
 test.o: test.c calculadora.h
 	${CC} -c $<
 
+clean:
+	rm -f *.o
+	rm -f test
+	rm -f *~
 
 
