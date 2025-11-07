@@ -22,7 +22,7 @@ jobs:
     needs: build
     steps:
       - name: Checkout code
-        use: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: sudo apt install libcunit1 libcunit1-dev
