@@ -18,7 +18,7 @@ jobs:
         run: sudo apt install cppcheck
 
       - name: Check Code
-        run: cppcheck calculadora.c
+        run: cppcheck --enable=style calculadora.c
       
   build:
     runs-on: ubuntu-latest
