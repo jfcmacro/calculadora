@@ -11,8 +11,8 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout code
-      #   uses: action/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: sudo apt install libcunit1 libcunit1-dev
