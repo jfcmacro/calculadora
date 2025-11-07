@@ -9,6 +9,12 @@ void test_suma(void) {
     CU_ASSERT(sumar(0, 0) == 0);
 }
 
+void test_resta(void) {
+    CU_ASSERT(restar(2, 2) == 0);
+    CU_ASSERT(restar(-1, 1) == -2);
+    CU_ASSERT(restar(0, 0) == 0);
+}
+
 int main() {
     // Inicializa el registro de pruebas
     if (CUE_SUCCESS != CU_initialize_registry())
@@ -23,6 +29,12 @@ int main() {
 
     // Agrega el test al suite
     if (NULL == CU_add_test(suite, "Prueba de suma", test_suma)) {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    // Agrega el test al suite
+    if (NULL == CU_add_test(suite, "Prueba de restar", test_restar)) {
         CU_cleanup_registry();
         return CU_get_error();
     }
