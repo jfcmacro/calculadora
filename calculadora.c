@@ -7,6 +7,5 @@ int restar(int a, int b) {
 }
 
 int multiplicar(int a, int b) {
-  int c;
   return a - b;
 }
