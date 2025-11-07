@@ -3,17 +3,9 @@
 #include <CUnit/Basic.h>
 #include "calculadora.h"
 
-void test_sumar(void) {
-    CU_ASSERT(sumar(2, 2) == 4);
-    CU_ASSERT(sumar(-1, 1) == 0);
-    CU_ASSERT(sumar(0, 0) == 0);
-}
-
-void test_restar(void) {
-    CU_ASSERT(restar(2, 2) == 0);
-    CU_ASSERT(restar(-1, 1) == -2);
-    CU_ASSERT(restar(0, 0) == 0);
-}
+void test_sumar(void);
+void test_restar(void);
+void test_multiplicar(void);
 
 int main() {
     // Inicializa el registro de pruebas
@@ -39,9 +31,33 @@ int main() {
         return CU_get_error();
     }
 
+        // Agrega el test al suite
+    if (NULL == CU_add_test(suite, "Prueba de multiplicar", test_multiplicar)) {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
     // Corre los tests en modo básico
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();
     CU_cleanup_registry();
     return CU_get_error();
+}
+
+void test_sumar(void) {
+    CU_ASSERT(sumar(2, 2) == 4);
+    CU_ASSERT(sumar(-1, 1) == 0);
+    CU_ASSERT(sumar(0, 0) == 0);
+}
+
+void test_restar(void) {
+    CU_ASSERT(restar(2, 2) == 0);
+    CU_ASSERT(restar(-1, 1) == -2);
+    CU_ASSERT(restar(0, 0) == 0);
+}
+
+void test_multiplicar(void) {
+    CU_ASSERT(multiplicar(2, 2) == 4);
+    CU_ASSERT(multiplicar(-1, 1) == -1);
+    CU_ASSERT(multiplicar(0, 0) == 0);
 }
