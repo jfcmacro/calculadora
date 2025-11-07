@@ -8,8 +8,8 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    runs-on: debian:latest
+  build-and-test:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: action/checkout@v4
