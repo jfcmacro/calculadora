@@ -8,17 +8,35 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Build project
+        run: make calculadora.o
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        use: actions/checkout@v4
+        
       - name: Install dependencies
         run: sudo apt install libcunit1 libcunit1-dev
 
       - name: Build project
-        run: make
+        run: make calculadora.o
 
       - name: Test
         run: ./test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'ref/head/main' && success()
+    steps:
+      - name: deploy to server
+        run: echo "Desplegando al servidor"
