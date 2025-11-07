@@ -3,13 +3,13 @@
 #include <CUnit/Basic.h>
 #include "calculadora.h"
 
-void test_suma(void) {
+void test_sumar(void) {
     CU_ASSERT(sumar(2, 2) == 4);
     CU_ASSERT(sumar(-1, 1) == 0);
     CU_ASSERT(sumar(0, 0) == 0);
 }
 
-void test_resta(void) {
+void test_restar(void) {
     CU_ASSERT(restar(2, 2) == 0);
     CU_ASSERT(restar(-1, 1) == -2);
     CU_ASSERT(restar(0, 0) == 0);
@@ -28,7 +28,7 @@ int main() {
     }
 
     // Agrega el test al suite
-    if (NULL == CU_add_test(suite, "Prueba de suma", test_suma)) {
+    if (NULL == CU_add_test(suite, "Prueba de suma", test_sumar)) {
         CU_cleanup_registry();
         return CU_get_error();
     }
