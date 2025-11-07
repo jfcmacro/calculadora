@@ -20,7 +20,7 @@ jobs:
 
       - name: Build project
         run: |
-          make -f calculadora.o test
+          make -k calculadora.o test
 
       - name: Test
         run: |
