@@ -1,0 +1,27 @@
+name: Calculadora
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  builds:
+    runs-on: debian-latest
+
+  steps:
+    - name: Checkout code
+      uses: action/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt install libcunit1 libcunit1-dev
+
+    - name: Build project
+      run: |
+        make -f calculadora.o test
+
+    - name: Test
+      run: |
+        ./test
